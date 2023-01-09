@@ -1,0 +1,32 @@
+.light-box{
+    position: absolute;
+    display: flex;
+    top: 0;
+    right: 0;
+    background-color: rgba(128, 128, 128, 0.16);
+    width: 100vw;
+    height: 100vh;
+    color: #901C1C;
+}.light-box .div_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2vh 2vw;
+    width: 96vw;
+    height: 96vh;
+}.light-box .div_container i{
+    font-size: 50px;
+}.light-box .div_container .X{
+    display: flex;
+    position: absolute;
+    align-self: flex-start;
+    right: 2vh;
+}.light-box .div_container .div_img img{
+    object-fit: cover;
+    max-width: calc(96vw - 100px);
+    max-height: calc(96vh - 40px);
+    width: auto;
+    height: auto;
+}.light-box .div_container .div_img .titre{
+    margin: 10px 0;
+}

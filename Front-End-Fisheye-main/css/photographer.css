@@ -1,3 +1,5 @@
+@import url('./lightbox.css');
+
 #contact_modal {
     display: none;
     overflow: hidden;
@@ -124,18 +126,16 @@ form input {
     padding: 10px;
     color: white;
     background-color: #901C1C;
-    font-weight: bold;
+    font-weight: 300;
 }
 .photograph-main .media_grid{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-flow: row wrap;
     align-items: center;
-    margin: 10px;
-    padding: 10px;
+    justify-content: space-between;
 }
 .photograph-main .media_grid .media_element{
-    margin: 10px;
+    margin: 10px 3px 30px 3px;
     width: 200px;
     height: 200px;
 }.media_element img, .media_element video{
@@ -144,10 +144,18 @@ form input {
     object-fit: cover;
     border-radius: 5px;
     margin-bottom: -10px;
+}.media_element i{
+    position: absolute;
+    padding: 10px;
+    color: #901C1C;
 }.media_element div{
     display: flex;
     color: #901C1C;
+    align-items: center;
     justify-content: space-between;
+}.heart::after{
+    color: #901C1C;
+    content: "\f004";
 }
 
 .photograph-foot{

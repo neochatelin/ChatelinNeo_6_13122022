@@ -1,0 +1,5 @@
+gere l'adaptibiliter (alt et label)
+light box
+le trie et l'afichage des image
+terminer p1
+linter

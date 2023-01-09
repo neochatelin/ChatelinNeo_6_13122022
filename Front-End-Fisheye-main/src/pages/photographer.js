@@ -1,13 +1,14 @@
-import { photographerApiModel } from "../api/photographer_api.js";
 import { photographerModel } from "../factories/photographer.js";
+import { photographerApiModel } from "../api/photographer_api.js";
+import { MediaFactoriesModel } from "../factories/media.js";
 
-let displayData = async (media)=>{
+let displayData = async ()=>{
     photographerModel.getUserProfileDOM();
-    photographerModel.getMediaCardDOM(media);
+    MediaFactoriesModel.getMediaCardDOM();
 }
 let init = async ()=>{
     let photographer = await photographerApiModel.getPhotographer(new URLSearchParams(window.location.search).get('photographer'));
-    const media = await photographerApiModel.getAllMedia(photographer.id);
-    photographerModel.loadUser(photographer);
-    await displayData(media);
+    await photographerModel.loadUser(photographer);
+    await MediaFactoriesModel.loadMedia(photographer);
+    await displayData();
 };init();

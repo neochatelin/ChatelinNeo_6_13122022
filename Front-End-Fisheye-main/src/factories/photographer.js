@@ -7,6 +7,7 @@ class PhotographerFactory{
         this.country;
         this.tagline;
         this.price;
+        this.media;
     }
     getUserCardDOM() {
         const article = document.createElement( 'article' );
@@ -32,39 +33,6 @@ class PhotographerFactory{
         article.appendChild(p_tagline);
         article.appendChild(p_price);
         return (article);
-    }
-    getMediaCardDOM(media) {
-        const main = document.querySelector(".photograph-main");
-        const media_grid = document.createElement('div');
-        media_grid.setAttribute('class', 'media_grid');
-        media.forEach(element => {
-            let media_elem = document.createElement('div');
-            media_elem.setAttribute('class', 'media_element');
-            media_elem.setAttribute('onclick', `console.log(${element.id})`);
-            if(element.image){
-                const img = document.createElement('img');
-                img.src = `../assets/images/${this.name.split(' ')[0].replace('-', ' ')}/${element.image}`;
-                media_elem.appendChild(img);
-            }
-            else{
-                const video = document.createElement('video');
-                video.src = `../assets/images/${this.name.split(' ')[0].replace('-', ' ')}/${element.video}`;
-                media_elem.appendChild(video);
-            }
-            const media_titre = document.createElement('div');
-            const p_titre = document.createElement('p');
-            const p_likes = document.createElement('p');
-            const i_heart = document.createElement('i');
-            p_titre.textContent = element.title;
-            p_likes.textContent = element.likes+' ';
-            i_heart.setAttribute("class", "fa-solid fa-heart");
-            media_titre.appendChild(p_titre);
-            media_titre.appendChild(p_likes);
-            p_likes.appendChild(i_heart);
-            media_elem.appendChild(media_titre);
-            media_grid.appendChild(media_elem);
-        });
-        main.appendChild(media_grid);
     }
     getUserProfileDOM(){
         const main = document.querySelector('main');
@@ -142,7 +110,7 @@ class PhotographerFactory{
         div_like.appendChild(p_price);
         main.appendChild(div_like);
     }
-    loadUser(data){
+    async loadUser(data){
         let { name, id, portrait, city, country, tagline, price } = data;
         this.name = name;
         this.id = id;
