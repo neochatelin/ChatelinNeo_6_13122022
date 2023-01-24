@@ -1,9 +1,8 @@
 .light-box{
-    position: absolute;
-    display: flex;
+    position: fixed;
     top: 0;
     right: 0;
-    background-color: rgba(128, 128, 128, 0.16);
+    background-color: rgba(255, 255, 255, 0.473);
     width: 100vw;
     height: 100vh;
     color: #901C1C;
@@ -21,12 +20,12 @@
     position: absolute;
     align-self: flex-start;
     right: 2vh;
-}.light-box .div_container .div_img img{
+}.light-box .div_container .div_media img, .light-box .div_container .div_media video{
     object-fit: cover;
     max-width: calc(96vw - 100px);
     max-height: calc(96vh - 40px);
     width: auto;
     height: auto;
-}.light-box .div_container .div_img .titre{
+}.light-box .div_container .div_media .titre{
     margin: 10px 0;
 }

@@ -1,14 +1,17 @@
-import { photographerModel } from "../factories/photographer.js";
-import { photographerApiModel } from "../api/photographer_api.js";
-import { MediaFactoriesModel } from "../factories/media.js";
+import { photographerModel } from '../factories/photographer.js'
+import { photographerApiModel } from '../api/photographer_api.js'
+import { MediaFactoriesModel } from '../factories/media.js'
 
-let displayData = async ()=>{
-    photographerModel.getUserProfileDOM();
-    MediaFactoriesModel.getMediaCardDOM();
+const displayData = async () => {
+  photographerModel.getUserProfileDOM()
+  MediaFactoriesModel.getMediaCardDOM()
 }
-let init = async ()=>{
-    let photographer = await photographerApiModel.getPhotographer(new URLSearchParams(window.location.search).get('photographer'));
-    await photographerModel.loadUser(photographer);
-    await MediaFactoriesModel.loadMedia(photographer);
-    await displayData();
-};init();
+const init = async () => {
+  const photographer = await photographerApiModel.getPhotographer(new URLSearchParams(window.location.search).get('photographer'))
+  await photographerModel.loadUser(photographer)
+  await MediaFactoriesModel.loadMedia(photographer)
+  await displayData()
+  document.querySelector('#filter-select').addEventListener('change', async () => {
+    await MediaFactoriesModel.getMediaCardDOM()
+  })
+}; init()
