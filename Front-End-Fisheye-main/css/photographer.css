@@ -27,7 +27,7 @@
     width: 200px;
     border-radius: 50%;
     object-fit: cover;
-}.contact_button {
+}.contact_button, .contact_submit_button {
     font-size: 20px;
     font-weight: bold;
     color: white;
