@@ -12,7 +12,7 @@ class Filter {
   async orderBy (filter) {
     (!this.media) ? await this.#getMedia() : ''
     switch (filter) {
-      case 'popularite':
+      case 'popularité':
         this.media = this.media.sort((a, b) => b.likes - a.likes)
         break
       case 'date':

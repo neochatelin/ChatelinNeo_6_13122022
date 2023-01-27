@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable camelcase */
 import { photographerApiModel } from '../api/photographer_api.js'
-import { filterModel } from '../factories/filter.js'
+import { filterModel } from '../utils/filter.js'
 class Lightbox {
   constructor () {
     this.bool = false
@@ -92,7 +92,7 @@ class Lightbox {
   }
 
   async openLightbox (id) {
-    this.media = await filterModel.orderBy(document.querySelector('#filter-select').value)
+    this.media = await filterModel.orderBy(document.querySelector('.select').value)
     for (let index = 0; index < this.media.length; index++) {
       if (this.media[index].id === id) {
         this.cursor = index

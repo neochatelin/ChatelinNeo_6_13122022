@@ -2,6 +2,7 @@
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-expressions */
 import { photographerApiModel } from '../api/photographer_api.js'
+import { selectModel } from '../utils/Select.js'
 
 class PhotographerFactory {
   constructor () {
@@ -43,7 +44,7 @@ class PhotographerFactory {
     return (article)
   }
 
-  getUserProfileDOM () {
+  async getUserProfileDOM () {
     const main = document.querySelector('main')
     const h2 = document.querySelector('h2')
     h2.textContent += ' ' + this.name
@@ -74,31 +75,15 @@ class PhotographerFactory {
     // photograph-main DOM
     const div_media = document.createElement('div')
     const label_filter = document.createElement('label')
-    const select_filter = document.createElement('select')
-    const option_popularite = document.createElement('option')
-    const option_date = document.createElement('option')
-    const option_titre = document.createElement('option')
 
     div_media.setAttribute('class', 'photograph-main')
 
     label_filter.textContent = 'Trier par '
     label_filter.setAttribute('for', 'filter-select')
-    select_filter.setAttribute('name', 'filter')
-    select_filter.setAttribute('id', 'filter-select')
-
-    option_popularite.textContent = 'Popularité'
-    option_popularite.setAttribute('value', 'popularite')
-    option_date.textContent = 'Date'
-    option_date.setAttribute('value', 'date')
-    option_titre.textContent = 'Titre'
-    option_titre.setAttribute('value', 'titre')
-
-    select_filter.appendChild(option_popularite)
-    select_filter.appendChild(option_date)
-    select_filter.appendChild(option_titre)
+    selectModel.setOptions(['popularité', 'date', 'titre'])
 
     div_media.appendChild(label_filter)
-    div_media.appendChild(select_filter)
+    div_media.appendChild(await selectModel.getDom())
 
     main.appendChild(div_media)
 

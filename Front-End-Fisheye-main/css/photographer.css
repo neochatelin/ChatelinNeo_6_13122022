@@ -40,17 +40,19 @@
     cursor: pointer;
 }.modal {
     position: fixed;
-    top: 0;
-    left: 0;
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
+    top: 0;
+    left: 0;
+    text-align: left;
+    border-radius: 5px;
+    background-color: #DB8876;
+    min-width: 500px;
+    width: 40vw;
+    height: 85vh;
     padding: 35px;
-    margin: 30px calc(50vw - 25%);
+    margin: calc((100vh - 85vh) / 2 - 35px) calc((60vw / 2) - 35px);
 }#contact_modal::before{
     display: block;
     position: fixed;
@@ -62,15 +64,20 @@
 }.modal header {
     justify-content: space-between;
     width: 100%;
-}.modal header img {
-    cursor: pointer;
+    height: 130px;
 }.modal header h2 {
     font-size: 60px;
     font-weight: normal;
-    text-align: center;
+    position: static;
+}.modal header img {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
 }form {
     display: flex;
     width: 100%;
+    height: 600px;
     flex-direction: column;
     align-items: flex-start;
 }form label {
@@ -82,25 +89,92 @@
     width: 100%;
     align-items: self-start;
     margin-bottom: 26px;
-}form input {
+}form input, form textarea {
     width: 100%;
-    height: 68px;
+    height: 50px;
+    font-size: 30px;
     border: none;
     border-radius: 5px;
+}form textarea#msg {
+    font-size: 16px;
+    height: 100px;
+    resize: none;
 }
 
 .photograph-main{
     margin: 20px 100px;
     margin-bottom: 40px;
-}.photograph-main label{
-    font-weight: bold;}.photograph-main select{
+}
+
+.photograph-main label{
+    font-weight: bold;
+}.select_container{
+    width: 200px;
+    position: relative;
+}.select_container .select{
+    position: relative;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
     border: none;
-    border-radius: 5px;
-    padding: 10px;
-    color: white;
-    background-color: #901C1C;
-    font-weight: 300;
-}.photograph-main .media_grid{
+    text-transform: capitalize;
+    color: #fff;
+    background: #901c1c;
+    text-align: left;
+    padding: 0 15px;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+}.select_container .select::after{
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}.select_container .select.active::after{
+    transform: translateY(-50%) rotate(-135deg);
+}.select_container .select:hover{
+    background: #7f1818;
+}.select_container .select.active{
+    background: #901c1c;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}.select_container .options{
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    height: fit-content;
+    background: #901c1c;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+    display: none;
+}.select_container .options.active{
+    display: block;
+}.select_container .options .item{
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    text-transform: capitalize;
+    border-top: 1px white solid;
+    width: calc(100% - 30px);
+    height: 30px;
+    margin: 0 15px;
+    padding: 10px 0;
+    line-height: 30px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+
+.photograph-main .media_grid{
     display: flex;
     flex-flow: row wrap;
     align-items: center;

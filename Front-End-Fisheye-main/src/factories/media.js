@@ -2,9 +2,9 @@
 /* eslint-disable no-unused-expressions */
 import { photoCardDOM } from './media/photo.js'
 import { videoCardDOM } from './media/video.js'
-import { filterModel } from './filter.js'
+import { filterModel } from '../utils/filter.js'
 
-import { LightboxModel } from '../utils/lightbox.js'
+import { LightboxModel } from './lightbox.js'
 import { photographerModel } from './photographer.js'
 
 class MediaFactories {
@@ -14,10 +14,10 @@ class MediaFactories {
   }
 
   async getMediaCardDOM () {
-    this.media = await filterModel.orderBy(document.querySelector('#filter-select').value);
+    this.media = await filterModel.orderBy(document.querySelector('.select').value);
     (document.querySelector('.media_grid')) ? document.querySelector('.media_grid').remove() : ''
     const main = document.querySelector('.photograph-main')
-    const media_grid = document.createElement('div')
+    const media_grid = document.createElement('article')
     media_grid.setAttribute('class', 'media_grid');
     (this.media).forEach(element => {
       let media_elem

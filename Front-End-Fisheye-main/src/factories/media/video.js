@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 class Video {
   get (path) {
-    const media_elem = document.createElement('div')
+    const media_elem = document.createElement('section')
     media_elem.setAttribute('class', 'media_element')
     const video = document.createElement('video')
     const i = document.createElement('i')

@@ -3,7 +3,7 @@ import { photographerApiModel } from '../api/photographer_api.js'
 import { MediaFactoriesModel } from '../factories/media.js'
 
 const displayData = async () => {
-  photographerModel.getUserProfileDOM()
+  await photographerModel.getUserProfileDOM()
   MediaFactoriesModel.getMediaCardDOM()
 }
 const init = async () => {
@@ -11,7 +11,7 @@ const init = async () => {
   await photographerModel.loadUser(photographer)
   await MediaFactoriesModel.loadMedia(photographer)
   await displayData()
-  document.querySelector('#filter-select').addEventListener('change', async () => {
+  document.querySelector('.options').addEventListener('click', async () => {
     await MediaFactoriesModel.getMediaCardDOM()
   })
 }; init()
