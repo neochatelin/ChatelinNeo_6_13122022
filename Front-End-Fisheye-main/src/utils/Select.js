@@ -14,13 +14,13 @@ class Select {
 
     (this.options).map((e, i) => {
       if (e !== this.options[this.activeOption]) {
-        const elem = document.createElement('p')
+        const elem = document.createElement('button')
         elem.textContent = e;
         (e === this.options[this.activeOption]) ? elem.setAttribute('class', 'item active') : elem.setAttribute('class', 'item')
-        elem.addEventListener('click', (e) => {
+        elem.onclick = (e) => {
           this.activeOption = i
           this.#onChange()
-        })
+        }
         document.querySelector('.options').appendChild(elem)
       }
     })
@@ -39,13 +39,15 @@ class Select {
     select.appendChild(select_button)
 
     const select_options = document.createElement('div')
-    select_options.setAttribute('class', 'options');
+    select_options.setAttribute('class', 'options')
+    select_options.setAttribute('tabindex', '1');
 
     (this.options).map((e, i) => {
       if (e !== this.options[this.activeOption]) {
-        const elem = document.createElement('p')
+        const elem = document.createElement('button')
         elem.textContent = e
-        elem.setAttribute('value', this.options[this.activeOption]);
+        elem.setAttribute('value', this.options[this.activeOption])
+        elem.setAttribute('tabindex', '0');
         (e === this.options[this.activeOption]) ? elem.setAttribute('class', 'item active') : elem.setAttribute('class', 'item')
         elem.addEventListener('click', (e) => {
           this.activeOption = i

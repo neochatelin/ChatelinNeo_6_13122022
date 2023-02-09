@@ -21,6 +21,7 @@ class PhotographerFactory {
     const article = document.createElement('article')
     const a = document.createElement('a')
     a.setAttribute('href', './photographer.html?photographer=' + this.id)
+    a.setAttribute('aria-label', 'profile de ' + this.name)
     const img = document.createElement('img')
     img.setAttribute('src', `../assets/photographers/${this.portrait}`)
     img.alt = this.name + ' profile picture'

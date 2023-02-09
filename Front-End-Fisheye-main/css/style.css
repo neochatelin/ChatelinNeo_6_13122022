@@ -26,6 +26,11 @@ body {
     flex-direction: column;
     padding: 0 70px;
     margin: 50px auto;
+    width: 300px;
+    transition: 0.5s ease-in-out;
+}.photographer_section article:hover, .photographer_section article a:focus{
+    transition: 0.5s ease-in-out;
+    transform: translateY(-10px);
 }.photographer_section article a {
     text-decoration: none;
     text-align: center;

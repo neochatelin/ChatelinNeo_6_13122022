@@ -27,6 +27,13 @@
     width: 200px;
     border-radius: 50%;
     object-fit: cover;
+}@media screen and (max-width: 930px){
+    .photograph-header{
+        flex-direction: column;
+        height: 450px;
+    }.photograph-header img{
+        order: -1;
+    }
 }.contact_button, .contact_submit_button {
     font-size: 20px;
     font-weight: bold;
@@ -157,7 +164,10 @@
 }.select_container .options.active{
     display: block;
 }.select_container .options .item{
+    display: flex;
     position: relative;
+    background-color: transparent;
+    border: none;
     z-index: 1;
     color: #fff;
     text-transform: capitalize;
@@ -166,7 +176,7 @@
     height: 30px;
     margin: 0 15px;
     padding: 10px 0;
-    line-height: 30px;
+    line-height: 10px;
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
@@ -179,13 +189,19 @@
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
-}.photograph-main .media_grid .media_element:focus{
-    border:blue 2px solid;
-    border-radius: 5px;
 }.photograph-main .media_grid .media_element{
     margin: 10px 3px 30px 3px;
     width: 200px;
     height: 200px;
+}.media_element button{
+    display: block;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    transition: 0.2s;
+}.media_element .media_button:hover, .media_element .media_button:focus{
+    transition: 0.2s;
+    transform: translateY(-5px);
 }.media_element img, .media_element video{
     width: 200px;
     height: 200px;
@@ -194,9 +210,10 @@
     margin-bottom: -10px;
 }.media_element i{
     position: absolute;
-    padding: 10px;
+    margin-left: -90px;
+    margin-top: 10px;
     color: #901C1C;
-}.media_element div{
+}.media_element div, .media_element div button p{
     display: flex;
     color: #901C1C;
     align-items: center;

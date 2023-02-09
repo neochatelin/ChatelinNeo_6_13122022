@@ -20,38 +20,57 @@ class MediaFactories {
     const media_grid = document.createElement('article')
     media_grid.setAttribute('class', 'media_grid');
     (this.media).forEach(element => {
-      let media_elem
+      const media_button = document.createElement('button')
+      media_button.setAttribute('aria-label', element.title)
+      media_button.setAttribute('class', 'media_button')
+      const media_elem = document.createElement('section')
+      media_elem.setAttribute('class', 'media_element')
 
       if (element.image) {
-        media_elem = photoCardDOM.get(`../assets/images/${this.user.name.split(' ')[0].replace('-', ' ')}/${element.image}`, element.title)
+        const i_image = document.createElement('i')
+        i_image.setAttribute('class', 'fa-solid fa-image')
+        media_button.appendChild(i_image)
+        media_button.appendChild(photoCardDOM.get(`../assets/images/${this.user.name.split(' ')[0].replace('-', ' ')}/${element.image}`, element.title))
+        media_elem.appendChild(media_button)
       } else if (element.video) {
-        media_elem = videoCardDOM.get(`../assets/images/${this.user.name.split(' ')[0].replace('-', ' ')}/${element.video}`)
+        const i_video = document.createElement('i')
+        i_video.setAttribute('class', 'fa-solid fa-video')
+        media_button.appendChild(i_video)
+        media_button.appendChild(videoCardDOM.get(`../assets/images/${this.user.name.split(' ')[0].replace('-', ' ')}/${element.video}`))
+        media_elem.appendChild(media_button)
       }
 
-      media_elem.addEventListener('click', async (e) => { if (e.target.tagName !== 'P') await LightboxModel.openLightbox(element.id) })
+      media_button.addEventListener('click', async (e) => { if (e.target.tagName !== 'P') await LightboxModel.openLightbox(element.id) })
       const media_titre = document.createElement('div')
       const p_titre = document.createElement('p')
+      const button_likes = document.createElement('button')
       const p_likes = document.createElement('p')
       p_titre.textContent = element.title
       p_titre.setAttribute('class', 'titre')
-      p_likes.setAttribute('class', 'fa-solid heart')
+      p_likes.setAttribute('class', 'fa-regular heart')
       p_likes.setAttribute('liked', 'false')
+      button_likes.setAttribute('liked', 'false')
       p_likes.textContent = element.likes + ' '
       media_titre.appendChild(p_titre)
-      media_titre.appendChild(p_likes)
+      button_likes.appendChild(p_likes)
+      media_titre.appendChild(button_likes)
       media_elem.appendChild(media_titre)
 
-      p_likes.addEventListener('click', (e) => {
+      button_likes.onclick = (e) => {
         if (e.target.attributes.liked.value === 'false') {
           p_likes.textContent = parseInt(p_likes.textContent) + 1
           photographerModel.addLike()
+          p_likes.setAttribute('class', 'fa-solid heart')
           p_likes.setAttribute('liked', 'true')
+          button_likes.setAttribute('liked', 'true')
         } else {
           p_likes.textContent = parseInt(p_likes.textContent) - 1
           photographerModel.removeLike()
+          p_likes.setAttribute('class', 'fa-regular heart')
           p_likes.setAttribute('liked', 'false')
+          button_likes.setAttribute('liked', 'false')
         }
-      })
+      }
 
       media_grid.appendChild(media_elem)
     })
